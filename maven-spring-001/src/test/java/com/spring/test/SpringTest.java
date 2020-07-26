@@ -12,7 +12,7 @@ public class SpringTest {
 		ApplicationContext context =new ClassPathXmlApplicationContext("spring.xml");
 		Bean bean = context.getBean("bean", Bean.class);
 		
-		System.out.println(bean.toString());
+		System.out.println("123"+bean.toString());
 	}
 
 }
