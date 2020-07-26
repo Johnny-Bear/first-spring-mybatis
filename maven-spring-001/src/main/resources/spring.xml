@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+xsi:schemaLocation
+="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+     <bean id="anotherBean" class="com.spring.beans.AnotherBean"></bean>
+     
+     <bean id="bean" class="com.spring.beans.Bean">
+     <!-- 使用有参构造方法给bean的变量注入值   --> 
+         <constructor-arg index="0" name="name" type="java.lang.String"
+         value="aaa"></constructor-arg>
+         <constructor-arg index="1" name="anotherBean" type="com.spring.beans.AnotherBean"
+         ref="anotherBean"></constructor-arg>
+         <!-- 使用类中set方法给成员变量赋值 -->
+         <property name="name" value="bbb"></property>
+         <property name="anotherBean" ref="anotherBean"></property>
+         
+         <!-- 使用set方式给集合赋值，以list为例，set集合与list一样，改变标签<list>为<set>即可 -->
+         <property name="stringList">
+            <list>
+               <value>ccc</value>
+               <value>ddd</value>
+               <value>eee</value>
+            </list>
+         </property>
+         <property name="anotherBeanList">
+           <list>
+              <ref bean="anotherBean"/>
+              <ref bean="anotherBean"/>
+              <ref bean="anotherBean"/>
+           </list>
+         </property>
+     </bean> 
+     
+     
+</beans>
